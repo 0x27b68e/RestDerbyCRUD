@@ -1,8 +1,11 @@
 package com.quan.course;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Service;
 
 public interface CourseRepoService extends CrudRepository<Course, String>{
+	
+	public List<Course> findByTopicTitle(String title);
 
 }

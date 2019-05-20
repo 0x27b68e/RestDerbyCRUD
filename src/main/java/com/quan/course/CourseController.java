@@ -18,10 +18,10 @@ public class CourseController {
 	@Autowired
 	private CourseService coursesService;
 	
-	//http://localhost:8080/topics
+	//localhost:8080/topics/Java/courses
 	@RequestMapping("/topics/{id}/courses")
 	public List<Course> getAllCourses(@PathVariable String id) {
-		// todo
+		
 		return coursesService.listCourses(id);
 	}
 	
@@ -39,7 +39,7 @@ public class CourseController {
 	
 	@RequestMapping(value = "/topics/{topicId}/courses", method = RequestMethod.POST)
 	public void addCourse(@RequestBody Course course, @PathVariable String topicId) {
-	//	course.setTopic(new Topic(topicId, ""));
+		course.setTopic(new Topic(topicId, ""));
 		coursesService.addCourse(course);
 	}
 	
@@ -50,13 +50,13 @@ public class CourseController {
 	 */
 	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.PUT)
 	public void updateCourse(@RequestBody Course course, @PathVariable String id, @PathVariable String topicId) {
-	//	course.setTopic(new Topic(topicId,""));
+		course.setTopic(new Topic(topicId,""));
 		coursesService.updateCourse(id, course);
 	}
 	
 	//localhost:8080/deleteTopic/JQuery
 	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.DELETE)
-	public void deleteCourse(@PathVariable String id, @PathVariable String topicId) {
+	public void deleteCourse(@PathVariable String id) {
 		coursesService.deleteCourse(id);
 	}
 	
